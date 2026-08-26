@@ -3,10 +3,6 @@
 .env.*
 !.env.example
 
-# Lavalink runtime data and downloaded plugins
-data/
-plugins/*.jar
-
 # Logs and JVM crash reports
 logs/
 *.log
