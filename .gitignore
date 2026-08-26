@@ -1,0 +1,29 @@
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Lavalink runtime data and downloaded plugins
+data/
+plugins/*.jar
+
+# Logs and JVM crash reports
+logs/
+*.log
+hs_err_pid*
+
+# Editor files
+.idea/
+.vscode/
+*.iml
+*.swp
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp

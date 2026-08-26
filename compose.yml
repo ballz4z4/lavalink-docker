@@ -1,0 +1,46 @@
+services:
+  lavalink:
+    image: ghcr.io/lavalink-devs/lavalink:4-alpine
+    container_name: lavalink
+    restart: unless-stopped
+    depends_on:
+      - yt-cipher
+      - spotify-tokener
+    environment:
+      - _JAVA_OPTIONS=-Xmx6G
+    env_file:
+      - ../.env
+    volumes:
+      - ./application.yml:/opt/Lavalink/application.yml
+      - ./plugins/:/opt/Lavalink/plugins/
+      - ./data/:/opt/Lavalink/data/
+    networks:
+      - lavalink
+    expose:
+      - 2333
+    ports:
+      - "2333:2333"
+
+  yt-cipher:
+    image: ghcr.io/kikkia/yt-cipher:master
+    container_name: yt-cipher
+    restart: unless-stopped
+    environment:
+      - OVERRIDE_PLAYER_VARIANT=IAS
+    networks:
+      - lavalink
+    expose:
+      - 8001
+
+  spotify-tokener:
+    image: ghcr.io/topi314/spotify-tokener:master
+    container_name: spotify-tokener
+    restart: unless-stopped
+    networks:
+      - lavalink
+    expose:
+      - 8080
+
+networks:
+  lavalink:
+    name: lavalink
