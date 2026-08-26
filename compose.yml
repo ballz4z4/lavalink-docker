@@ -9,7 +9,7 @@ services:
     environment:
       - _JAVA_OPTIONS=-Xmx6G
     env_file:
-      - ../.env
+      - .env
     volumes:
       - ./application.yml:/opt/Lavalink/application.yml
       - ./plugins/:/opt/Lavalink/plugins/
